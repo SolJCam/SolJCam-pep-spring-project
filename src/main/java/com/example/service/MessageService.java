@@ -1,6 +1,7 @@
 package com.example.service;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.*;
@@ -48,11 +49,13 @@ public class MessageService {
         return null;
     }
 
+    @Transactional
     public int deleteMessageById(int message_id) throws Exception{
         messageRepository.deleteById(message_id);
         return 1;
     }
 
+    @Transactional
     public int updateMessage(String updatedMessage, int message_id){
         if(updatedMessage.length() < 1 || updatedMessage.length() > 255){
             return 0;
