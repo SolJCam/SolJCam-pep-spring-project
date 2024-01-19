@@ -63,8 +63,9 @@ public class MessageService {
         }
         Message message = optionalMessage.get();
         message.setMessage_text(updatedMessage);
-        messageRepository.save(message);
-        return 1;
+        List<Message> messageList = new ArrayList<>();
+        messageList.add(messageRepository.save(message));
+        return messageList.size();
     }
 
     public List<Message> allUserMessages(int userId){
