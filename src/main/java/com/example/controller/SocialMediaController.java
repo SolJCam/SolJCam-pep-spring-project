@@ -87,7 +87,7 @@ public class SocialMediaController {
         return ResponseEntity.status(200).body(deletedMessages);
     }
 
-    @RequestMapping(value = "/messages/{message_id}", produces = "application/json", method=RequestMethod.PATCH)
+    @PatchMapping("/messages/{message_id}")
     private ResponseEntity<Integer> updateMessage(@RequestBody Message message, @PathVariable int message_id) {
         int updateSuccessful = messageService.updateMessage(message.getMessage_text(), message_id);
         if( updateSuccessful > 0){
